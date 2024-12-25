@@ -41,3 +41,9 @@ func add_or_update_score(player: String, score: int) -> void:
 	sort_scores_by_value()
 	truncate_map(k_max_entries)
 	SaveSystem.save_file(k_save_file_path, global_hi_scores)
+
+func get_top_score_value() -> int:
+	var top_score = 0
+	for key in global_hi_scores.keys():
+		top_score = max(top_score, global_hi_scores[key])
+	return top_score

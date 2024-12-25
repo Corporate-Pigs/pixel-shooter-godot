@@ -12,4 +12,6 @@ extends CanvasLayer
 
 
 func _on_save_button_button_up() -> void:
-	ScoreSystem.add_or_update_score("test", 1337)
+	const k_score = 999999
+	ScoreSystem.add_or_update_score("test", k_score)
+	assert(ScoreSystem.get_top_score_value() == k_score + 1)
