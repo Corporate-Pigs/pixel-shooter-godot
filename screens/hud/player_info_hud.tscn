@@ -1,0 +1,129 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm7readwc7n88"]
+
+[ext_resource type="Script" path="res://screens/hud/player_info_hud.gd" id="1_7vupn"]
+[ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="2_wyieg"]
+
+[node name="PlayerInfoHud" type="CenterContainer"]
+offset_right = 154.0
+offset_bottom = 116.0
+script = ExtResource("1_7vupn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Player 1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000000000"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+dragger_visibility = 1
+
+[node name="ContainerLives" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container" type="CenterContainer" parent="VBoxContainer/HBoxContainer/ContainerLives"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Life1Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ContainerLives/Container"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_wyieg")
+centered = false
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="Container2" type="CenterContainer" parent="VBoxContainer/HBoxContainer/ContainerLives"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Life2Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ContainerLives/Container2"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_wyieg")
+centered = false
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="Container3" type="CenterContainer" parent="VBoxContainer/HBoxContainer/ContainerLives"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Life3Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ContainerLives/Container3"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_wyieg")
+centered = false
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="ContainerSpecials" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container" type="CenterContainer" parent="VBoxContainer/HBoxContainer/ContainerSpecials"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ContainerSpecials/Container"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_wyieg")
+centered = false
+hframes = 10
+vframes = 10
+frame = 29
+
+[node name="Container2" type="CenterContainer" parent="VBoxContainer/HBoxContainer/ContainerSpecials"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ContainerSpecials/Container2"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_wyieg")
+centered = false
+hframes = 10
+vframes = 10
+frame = 29
+
+[node name="Container3" type="CenterContainer" parent="VBoxContainer/HBoxContainer/ContainerSpecials"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/ContainerSpecials/Container3"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_wyieg")
+centered = false
+hframes = 10
+vframes = 10
+frame = 29

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbqnjlcidwxbi"]
+
+[ext_resource type="Script" path="res://screens/hud/top_score_hud.gd" id="1_yx7lu"]
+
+[node name="TopScoreHud" type="CenterContainer"]
+script = ExtResource("1_yx7lu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TopScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Top Score
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000000000"
+horizontal_alignment = 1

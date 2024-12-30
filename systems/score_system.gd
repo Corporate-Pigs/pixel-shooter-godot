@@ -10,6 +10,9 @@ var global_hi_scores = {
 	"Player4": 3000
 }
 
+var session_hi_scores_per_player = [0, 0]
+var session_current_game_scores_per_player = [0, 0]
+
 func _sort_by_score(a, b, hi_scores) -> bool:
 	return hi_scores[a] < hi_scores[b] 
 
@@ -47,3 +50,19 @@ func get_top_score_value() -> int:
 	for key in global_hi_scores.keys():
 		top_score = max(top_score, global_hi_scores[key])
 	return top_score
+
+func get_hi_score_for_player_number(player_number: int) -> int:
+	var index = max(0, min(1, player_number))
+	return session_hi_scores_per_player[index]
+
+func set_hi_score_for_player_number(player_number: int, score: int) -> void:
+	var index = max(0, min(1, player_number))
+	session_hi_scores_per_player[index] = score
+
+func get_current_score_for_player_number(player_number: int) -> int:
+	var index = max(0, min(1, player_number))
+	return session_current_game_scores_per_player[index]
+
+func set_current_score_for_player_number(player_number: int, score: int) -> void:
+	var index = max(0, min(1, player_number))
+	session_current_game_scores_per_player[index] = score

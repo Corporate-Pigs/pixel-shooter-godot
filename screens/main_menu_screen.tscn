@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwwadycfv1mtk"]
+
+[ext_resource type="PackedScene" uid="uid://bm7readwc7n88" path="res://screens/hud/player_info_hud.tscn" id="1_oncps"]
+[ext_resource type="Script" path="res://screens/main_menu_screen.gd" id="1_qix1r"]
+[ext_resource type="PackedScene" uid="uid://bbqnjlcidwxbi" path="res://screens/hud/top_score_hud.tscn" id="2_c2pdl"]
+[ext_resource type="Texture2D" uid="uid://bajvysvxewjw8" path="res://assets/gfx/MainMenuBackground.png" id="2_ixvxq"]
+[ext_resource type="PackedScene" uid="uid://uudrlv4o4qs0" path="res://screens/hud/credits_hud.tscn" id="3_n1q5u"]
+[ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="4_swrix"]
+
+[node name="MainScreen" type="CanvasLayer"]
+script = ExtResource("1_qix1r")
+
+[node name="HeaderContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 116.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HeaderContainer"]
+layout_mode = 2
+
+[node name="TopLeftContainer" type="CenterContainer" parent="HeaderContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player1InfoHud" parent="HeaderContainer/HBoxContainer/TopLeftContainer" instance=ExtResource("1_oncps")]
+layout_mode = 2
+show_lifes = false
+show_specials = false
+
+[node name="CenterContainer" type="CenterContainer" parent="HeaderContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="TopScoreHud" parent="HeaderContainer/HBoxContainer/CenterContainer" instance=ExtResource("2_c2pdl")]
+layout_mode = 2
+
+[node name="TopRightContainer" type="CenterContainer" parent="HeaderContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player2InfoHud" parent="HeaderContainer/HBoxContainer/TopRightContainer" instance=ExtResource("1_oncps")]
+layout_mode = 2
+player_number = 2
+show_lifes = false
+show_specials = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 100
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/CenterContainer2"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ixvxq")
+
+[node name="FooterContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FooterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FooterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="FooterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Container" type="CenterContainer" parent="FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="1PlayerSprite2D" type="Sprite2D" parent="FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer/Container"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("4_swrix")
+centered = false
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="1PlayerLabel" type="Label" parent="FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1 Player"
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="FooterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Container" type="CenterContainer" parent="FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="2PlayersSprite2D" type="Sprite2D" parent="FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer2/Container"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("4_swrix")
+centered = false
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="2Player2Label" type="Label" parent="FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "2 Players"
+
+[node name="MarginContainer" type="MarginContainer" parent="FooterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="CenterContainer" type="CenterContainer" parent="FooterContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PressStartLabel" type="Label" parent="FooterContainer/VBoxContainer/VBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Press Start Button"
+
+[node name="ScreditsHud" parent="FooterContainer/VBoxContainer" instance=ExtResource("3_n1q5u")]
+layout_mode = 2
