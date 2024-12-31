@@ -141,5 +141,25 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Press Start Button"
 
-[node name="ScreditsHud" parent="FooterContainer/VBoxContainer" instance=ExtResource("3_n1q5u")]
+[node name="HBoxContainer" type="HBoxContainer" parent="FooterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="TopLeftContainer" type="CenterContainer" parent="FooterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScreditsHud" parent="FooterContainer/VBoxContainer/HBoxContainer/TopLeftContainer" instance=ExtResource("3_n1q5u")]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="FooterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="TopRightContainer" type="CenterContainer" parent="FooterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScreditsHud" parent="FooterContainer/VBoxContainer/HBoxContainer/TopRightContainer" instance=ExtResource("3_n1q5u")]
+layout_mode = 2
+player_number = 2

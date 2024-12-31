@@ -13,19 +13,17 @@ extends CenterContainer
 @onready var container_lives: HBoxContainer = $VBoxContainer/HBoxContainer/ContainerLives
 @onready var container_specials: HBoxContainer = $VBoxContainer/HBoxContainer/ContainerSpecials
 
-@onready var life_1_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/HBoxContainerLives/Container/Life1Sprite2D
-@onready var life_2_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/HBoxContainerLives/Container2/Life2Sprite2D
-@onready var life_3_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/HBoxContainerLives/Container3/Life3Sprite2D
+@onready var life_1_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/ContainerLives/Container/Life1Sprite2D
+@onready var life_2_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/ContainerLives/Container2/Life2Sprite2D
+@onready var life_3_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/ContainerLives/Container3/Life3Sprite2D
 
 var sprites = [life_1_sprite_2d, life_2_sprite_2d, life_3_sprite_2d]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_label.text = "Player-" + str(player_number)
 	container_lives.visible = show_lifes
 	container_specials.visible = show_specials
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var score = 0
 	if show_hi_score:

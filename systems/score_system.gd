@@ -12,6 +12,7 @@ var global_hi_scores = {
 
 var session_hi_scores_per_player = [0, 0]
 var session_current_game_scores_per_player = [0, 0]
+var credits_per_player = [0, 0]
 
 func _sort_by_score(a, b, hi_scores) -> bool:
 	return hi_scores[a] < hi_scores[b] 
@@ -39,6 +40,9 @@ func _ready() -> void:
 	sort_scores_by_value()
 	truncate_map(k_max_entries)
 
+func _get_index_from_player_number(player_number: int) -> int:
+	return max(0, min(1, player_number-1))
+
 func add_or_update_score(player: String, score: int) -> void:
 	global_hi_scores[player] = score
 	sort_scores_by_value()
@@ -52,17 +56,25 @@ func get_top_score_value() -> int:
 	return top_score
 
 func get_hi_score_for_player_number(player_number: int) -> int:
-	var index = max(0, min(1, player_number))
+	var index = _get_index_from_player_number(player_number)
 	return session_hi_scores_per_player[index]
 
 func set_hi_score_for_player_number(player_number: int, score: int) -> void:
-	var index = max(0, min(1, player_number))
+	var index = _get_index_from_player_number(player_number)
 	session_hi_scores_per_player[index] = score
 
 func get_current_score_for_player_number(player_number: int) -> int:
-	var index = max(0, min(1, player_number))
+	var index = _get_index_from_player_number(player_number)
 	return session_current_game_scores_per_player[index]
 
 func set_current_score_for_player_number(player_number: int, score: int) -> void:
-	var index = max(0, min(1, player_number))
+	var index = _get_index_from_player_number(player_number)
 	session_current_game_scores_per_player[index] = score
+
+func add_credit_to_player(player_number: int) -> void:
+	var index = _get_index_from_player_number(player_number)
+	credits_per_player[index] += 1
+	
+func get_credit_to_player(player_number: int) -> int:
+	var index = _get_index_from_player_number(player_number)
+	return credits_per_player[index]

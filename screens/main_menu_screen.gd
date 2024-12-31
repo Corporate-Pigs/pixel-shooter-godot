@@ -21,7 +21,6 @@ func _select_player_number(number: int) -> void:
 		_2_players_sprite_2d.visible = false
 		number_of_players = 1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_2_players_sprite_2d.visible = false
 
@@ -44,3 +43,7 @@ func _process(delta: float) -> void:
 		_select_player_number(1)
 	elif Input.is_action_pressed(InputConstants.k_down):
 		_select_player_number(2)
+		
+	if Input.is_action_pressed(InputConstants.k_insert_coin):
+		ScoreSystem.add_credit_to_player(1)
+		ScoreSystem.add_credit_to_player(2)
