@@ -1,0 +1,285 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8sw8eg5dcjub"]
+
+[ext_resource type="Script" path="res://screens/char_selection_subscreen.gd" id="1_afm2b"]
+[ext_resource type="Texture2D" uid="uid://dkri4j76rks8" path="res://assets/gfx/SpaceShooterAssetPack_IU_Buttons.png" id="2_nx1ts"]
+[ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="2_v6qrw"]
+[ext_resource type="Texture2D" uid="uid://gdud7y8aquag" path="res://assets/gfx/SpaceShooterAssetPack_Projectiles.png" id="3_7o2r4"]
+[ext_resource type="Texture2D" uid="uid://c2l380bgo42hc" path="res://assets/gfx/SpaceShooterAssetPack_Miscellaneous.png" id="5_e57t5"]
+[ext_resource type="Texture2D" uid="uid://dwxa27idti2i1" path="res://assets/gfx/SpaceShooterAssetPack_Characters.png" id="5_yocdx"]
+
+[sub_resource type="Animation" id="Animation_mxuus"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D/ShipSprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainer/VBoxContainer/HSplitContainer/CenterContainer/CharacterSprite2D:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_btuow"]
+resource_name = "left-right"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D/ShipSprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.142857, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.142857, 0.333333, 1.35676),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -60), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer/VBoxContainer/HSplitContainer/CenterContainer/CharacterSprite2D:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxlih"]
+_data = {
+"RESET": SubResource("Animation_mxuus"),
+"selection": SubResource("Animation_btuow")
+}
+
+[sub_resource type="Animation" id="Animation_5sb84"]
+resource_name = "flame"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D/FlameSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_xue22"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D/FlameSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o04kn"]
+_data = {
+"RESET": SubResource("Animation_xue22"),
+"flame": SubResource("Animation_5sb84")
+}
+
+[node name="CharSelectionSubscreen" type="Node2D"]
+script = ExtResource("1_afm2b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 300.0
+offset_bottom = 300.0
+
+[node name="LeftSelector" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="LeftSelectorSprite2D" type="Sprite2D" parent="HBoxContainer/LeftSelector"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_nx1ts")
+hframes = 9
+vframes = 8
+frame = 33
+
+[node name="VBoxContainer" type="VSplitContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+dragger_visibility = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Node2D" type="Node2D" parent="HBoxContainer/VBoxContainer/CenterContainer"]
+scale = Vector2(2, 2)
+
+[node name="Projectiles" type="Node2D" parent="HBoxContainer/VBoxContainer/CenterContainer/Node2D"]
+scale = Vector2(2, 2)
+
+[node name="RightProjectileSprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles"]
+texture_filter = 1
+position = Vector2(3, 0)
+texture = ExtResource("3_7o2r4")
+hframes = 6
+vframes = 10
+frame = 2
+
+[node name="LeftProjectileSprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles"]
+texture_filter = 1
+position = Vector2(-2, 0)
+texture = ExtResource("3_7o2r4")
+hframes = 6
+vframes = 10
+frame = 2
+
+[node name="Node2D" type="Node2D" parent="HBoxContainer/VBoxContainer/CenterContainer/Node2D"]
+
+[node name="ShipSprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_v6qrw")
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="FlameSprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D"]
+texture_filter = 1
+position = Vector2(0, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("5_e57t5")
+hframes = 13
+vframes = 8
+frame = 18
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CharacterSprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer/HSplitContainer/CenterContainer"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_yocdx")
+hframes = 5
+vframes = 11
+
+[node name="CharacterNameLabel" type="Label" parent="HBoxContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "John"
+
+[node name="RightSelector" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="RightSelectorSprite2D" type="Sprite2D" parent="HBoxContainer/RightSelector"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_nx1ts")
+hframes = 9
+vframes = 8
+frame = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oxlih")
+}
+
+[node name="FlameAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o04kn")
+}
+speed_scale = 5.0

@@ -1,15 +1,13 @@
 extends CanvasLayer
 
-@onready var _1_player_sprite_2d: Sprite2D = $"FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer/Container/1PlayerSprite2D"
-@onready var _2_players_sprite_2d: Sprite2D = $"FooterContainer/VBoxContainer/VBoxContainer/HSplitContainer2/Container/2PlayersSprite2D"
+@onready var _1_player_sprite_2d: Sprite2D = $"FooterContainer/VBoxContainer/VBoxContainer/1PlayerContainer/Container/1PlayerSprite2D"
+@onready var _2_players_sprite_2d: Sprite2D = $"FooterContainer/VBoxContainer/VBoxContainer/2PlayersContainer/Container/2PlayersSprite2D"
+
 @onready var press_start_label: Label = $FooterContainer/VBoxContainer/VBoxContainer/MarginContainer/CenterContainer/PressStartLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var next_scene: PackedScene
-@export var press_start_blink_period: int = 1
-
 var number_of_players: int = 1
-var time_since_last_blink: float = 0
-var press_start_alfa: float = 1
 
 func _select_player_number(number: int) -> void:
 	if number == 2:
@@ -23,27 +21,14 @@ func _select_player_number(number: int) -> void:
 
 func _ready() -> void:
 	_2_players_sprite_2d.visible = false
+	animation_player.play("press_start")
 
-func _update_press_start_label(delta: float) -> void:
-	time_since_last_blink += delta
-	if time_since_last_blink < press_start_blink_period:
-		return
-
-	time_since_last_blink = 0
-	if press_start_alfa == 1:
-		press_start_alfa = 0
-	else:
-		press_start_alfa = 1
-	press_start_label.self_modulate.a = press_start_alfa
-
-func _process(delta: float) -> void:
-	_update_press_start_label(delta)
-
-	if Input.is_action_pressed(InputConstants.k_up):
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed(Constants.k_up):
 		_select_player_number(1)
-	elif Input.is_action_pressed(InputConstants.k_down):
+	elif Input.is_action_just_pressed(Constants.k_down):
 		_select_player_number(2)
 		
-	if Input.is_action_pressed(InputConstants.k_insert_coin):
+	if Input.is_action_just_pressed(Constants.k_insert_coin):
 		ScoreSystem.add_credit_to_player(1)
 		ScoreSystem.add_credit_to_player(2)
