@@ -1,0 +1,482 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuoib2vhd3kg1"]
+
+[ext_resource type="Script" path="res://screens/paralax_background_scene.gd" id="1_435bv"]
+[ext_resource type="Texture2D" uid="uid://csv2nbey6rtli" path="res://assets/gfx/SpaceShooterAssetPack_BackGrounds.png" id="1_voawy"]
+
+[sub_resource type="Animation" id="Animation_a71ic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/LayerB:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/LayerA:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/LayerC:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jw2yo"]
+resource_name = "scroll"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/LayerB:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -512), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/LayerA:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -256), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/LayerC:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -768), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7rqe"]
+_data = {
+"RESET": SubResource("Animation_a71ic"),
+"paralax": SubResource("Animation_jw2yo")
+}
+
+[node name="ParalaxScene" type="Node2D"]
+scale = Vector2(2.55, 2.55)
+script = ExtResource("1_435bv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v7rqe")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="LayerA" type="Node2D" parent="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="Node2D/LayerA"]
+scale = Vector2(1, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerA/Node2D"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerA/Node2D"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Node2D2" type="Node2D" parent="Node2D/LayerA"]
+position = Vector2(128, 0)
+scale = Vector2(1, 1)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerA/Node2D2"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerA/Node2D2"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Node2D3" type="Node2D" parent="Node2D/LayerA"]
+position = Vector2(256, 0)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Node2D/LayerA/Node2D3"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Sprite2D9" type="Sprite2D" parent="Node2D/LayerA/Node2D3"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Node2D4" type="Node2D" parent="Node2D/LayerA"]
+position = Vector2(384, 0)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D/LayerA/Node2D4"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Sprite2D7" type="Sprite2D" parent="Node2D/LayerA/Node2D4"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="LayerB" type="Node2D" parent="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="Node2D/LayerB"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Node2D2" type="Node2D" parent="Node2D/LayerB"]
+position = Vector2(128, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D2"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D2"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D2"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Node2D3" type="Node2D" parent="Node2D/LayerB"]
+position = Vector2(256, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D3"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D3"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D3"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Node2D4" type="Node2D" parent="Node2D/LayerB"]
+position = Vector2(384, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D4"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D4"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D4"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="LayerC" type="Node2D" parent="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="Node2D/LayerC"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
+texture_filter = 1
+position = Vector2(0, 768)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Node2D2" type="Node2D" parent="Node2D/LayerC"]
+position = Vector2(128, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
+texture_filter = 1
+position = Vector2(0, 768)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Node2D3" type="Node2D" parent="Node2D/LayerC"]
+position = Vector2(256, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
+texture_filter = 1
+position = Vector2(0, 768)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Node2D4" type="Node2D" parent="Node2D/LayerC"]
+position = Vector2(384, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
+texture_filter = 1
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
+texture_filter = 1
+position = Vector2(0, 256)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
+texture_filter = 1
+position = Vector2(0, 512)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
+texture_filter = 1
+position = Vector2(0, 768)
+scale = Vector2(1, 1)
+texture = ExtResource("1_voawy")
+centered = false
+hframes = 3
+vframes = 2
+frame = 5

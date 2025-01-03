@@ -128,6 +128,21 @@ _data = {
 "selection": SubResource("Animation_btuow")
 }
 
+[sub_resource type="Animation" id="Animation_xue22"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D/FlameSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
 [sub_resource type="Animation" id="Animation_5sb84"]
 resource_name = "flame"
 loop_mode = 1
@@ -145,21 +160,6 @@ tracks/0/keys = {
 "values": [18, 19, 20, 21]
 }
 
-[sub_resource type="Animation" id="Animation_xue22"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/VBoxContainer/CenterContainer/Node2D/Node2D/FlameSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o04kn"]
 _data = {
 "RESET": SubResource("Animation_xue22"),
@@ -170,8 +170,13 @@ _data = {
 script = ExtResource("1_afm2b")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 300.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
 offset_bottom = 300.0
+grow_horizontal = 2
 
 [node name="LeftSelector" type="CenterContainer" parent="HBoxContainer"]
 layout_mode = 2

@@ -7,6 +7,7 @@ const k_right = "right"
 const k_insert_coin = "insert-coin"
 const k_action = "action"
 const k_back = "back"
+const k_start = "start"
 
 class CharacterInfo:
 	var _name: String = ""

@@ -1,12 +1,14 @@
 extends CanvasLayer
 
+@export var p1_next_scene: PackedScene
+@export var p2_next_scene: PackedScene
+
 @onready var _1_player_sprite_2d: Sprite2D = $"FooterContainer/VBoxContainer/VBoxContainer/1PlayerContainer/Container/1PlayerSprite2D"
 @onready var _2_players_sprite_2d: Sprite2D = $"FooterContainer/VBoxContainer/VBoxContainer/2PlayersContainer/Container/2PlayersSprite2D"
 
 @onready var press_start_label: Label = $FooterContainer/VBoxContainer/VBoxContainer/MarginContainer/CenterContainer/PressStartLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@export var next_scene: PackedScene
 var number_of_players: int = 1
 
 func _select_player_number(number: int) -> void:
@@ -24,6 +26,14 @@ func _ready() -> void:
 	animation_player.play("press_start")
 
 func _process(_delta: float) -> void:
+	
+	if Input.is_action_just_pressed(Constants.k_start):
+		if number_of_players == 2:
+			get_tree().change_scene_to_packed(p2_next_scene)
+		else:
+			get_tree().change_scene_to_packed(p1_next_scene)
+		return
+		
 	if Input.is_action_just_pressed(Constants.k_up):
 		_select_player_number(1)
 	elif Input.is_action_just_pressed(Constants.k_down):

@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://5nv44gyhv2kg"]
+
+[ext_resource type="PackedScene" uid="uid://b8sw8eg5dcjub" path="res://screens/char_selection_subscreen.tscn" id="1_hen3t"]
+[ext_resource type="Script" path="res://screens/1_player_char_selection_screen.gd" id="1_nelqi"]
+[ext_resource type="PackedScene" uid="uid://cuoib2vhd3kg1" path="res://screens/paralax_background_scene.tscn" id="1_nq3ox"]
+
+[sub_resource type="Animation" id="Animation_3xm16"]
+resource_name = "pulse-start"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxf6x"]
+_data = {
+"pulse-start": SubResource("Animation_3xm16")
+}
+
+[node name="CharSelectionScreen" type="CanvasLayer"]
+script = ExtResource("1_nelqi")
+
+[node name="ParalaxScene" parent="." instance=ExtResource("1_nq3ox")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 100
+
+[node name="VSplitContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Select your character
+"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="CenterContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CharSelectionSubscreen" parent="MarginContainer/VSplitContainer/AspectRatioContainer" instance=ExtResource("1_hen3t")]
+position = Vector2(0, -49)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hxf6x")
+}
+
+[connection signal="on_char_selected" from="MarginContainer/VSplitContainer/AspectRatioContainer/CharSelectionSubscreen" to="." method="_on_char_selection_subscreen_on_char_selected"]
+[connection signal="on_char_unselected" from="MarginContainer/VSplitContainer/AspectRatioContainer/CharSelectionSubscreen" to="." method="_on_char_selection_subscreen_on_char_unselected"]

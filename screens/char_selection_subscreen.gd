@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name CharSelectionSubscreen
+
 @onready var right_projectile_sprite_2d: Sprite2D = $HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles/RightProjectileSprite2D
 @onready var left_projectile_sprite_2d: Sprite2D = $HBoxContainer/VBoxContainer/CenterContainer/Node2D/Projectiles/LeftProjectileSprite2D
 @onready var character_sprite_2d: Sprite2D = $HBoxContainer/VBoxContainer/HSplitContainer/CenterContainer/CharacterSprite2D
@@ -15,6 +17,9 @@ var _is_selected: bool = false
 var _k_animation_name: String = "selection"
 var _k_flame_animation_name: String = "flame"
 var _selected_character: int = 0
+
+signal on_char_selected(selected_char_id: int)
+signal on_char_unselected()
 
 func get_selected_character() -> int:
 	return _selected_character
@@ -76,6 +81,7 @@ func _update_sprites() -> void:
 func _select_character() -> void:
 	_start_animation(flame_animation_player, _k_flame_animation_name)
 	_stop_animation(animation_player)
+	emit_signal("on_char_selected", _selected_character)
 	projectiles.visible = false
 	flame_sprite_2d.visible = true
 	_is_selected = true
@@ -85,6 +91,7 @@ func _select_character() -> void:
 func _deselect_character() -> void:
 	_stop_animation(flame_animation_player)
 	_start_animation(animation_player, _k_animation_name)
+	emit_signal("on_char_unselected")
 	projectiles.visible = true
 	flame_sprite_2d.visible = false
 	_is_selected = false

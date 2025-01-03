@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwwadycfv1mtk"]
+[gd_scene load_steps=11 format=3 uid="uid://cwwadycfv1mtk"]
 
 [ext_resource type="PackedScene" uid="uid://bm7readwc7n88" path="res://screens/hud/player_info_hud.tscn" id="1_oncps"]
 [ext_resource type="Script" path="res://screens/main_menu_screen.gd" id="1_qix1r"]
 [ext_resource type="PackedScene" uid="uid://bbqnjlcidwxbi" path="res://screens/hud/top_score_hud.tscn" id="2_c2pdl"]
 [ext_resource type="Texture2D" uid="uid://bajvysvxewjw8" path="res://assets/gfx/MainMenuBackground.png" id="2_ixvxq"]
+[ext_resource type="PackedScene" uid="uid://5nv44gyhv2kg" path="res://screens/1_player_char_selection_screen.tscn" id="2_rpf2i"]
 [ext_resource type="PackedScene" uid="uid://uudrlv4o4qs0" path="res://screens/hud/credits_hud.tscn" id="3_n1q5u"]
 [ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="4_swrix"]
 
@@ -48,6 +49,7 @@ _data = {
 
 [node name="MainScreen" type="CanvasLayer"]
 script = ExtResource("1_qix1r")
+p1_next_scene = ExtResource("2_rpf2i")
 
 [node name="HeaderContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
