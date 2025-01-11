@@ -13,6 +13,8 @@ class_name CharSelectionSubscreen
 @onready var left_selector_sprite_2d: Sprite2D = $HBoxContainer/LeftSelector/LeftSelectorSprite2D
 @onready var right_selector_sprite_2d: Sprite2D = $HBoxContainer/RightSelector/RightSelectorSprite2D
 
+@export var allow_desselect: bool = false
+
 var _is_selected: bool = false
 var _k_animation_name: String = "selection"
 var _k_flame_animation_name: String = "flame"
@@ -81,7 +83,7 @@ func _update_sprites() -> void:
 func _select_character() -> void:
 	_start_animation(flame_animation_player, _k_flame_animation_name)
 	_stop_animation(animation_player)
-	emit_signal("on_char_selected", _selected_character)
+	emit_signal(on_char_selected.get_name(), _selected_character)
 	projectiles.visible = false
 	flame_sprite_2d.visible = true
 	_is_selected = true
@@ -89,9 +91,11 @@ func _select_character() -> void:
 	right_selector_sprite_2d.modulate.a = 0
 
 func _deselect_character() -> void:
+	if not allow_desselect:
+		return
 	_stop_animation(flame_animation_player)
 	_start_animation(animation_player, _k_animation_name)
-	emit_signal("on_char_unselected")
+	emit_signal(on_char_unselected.get_name())
 	projectiles.visible = true
 	flame_sprite_2d.visible = false
 	_is_selected = false

@@ -103,11 +103,9 @@ libraries = {
 [node name="LayerA" type="Node2D" parent="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="Node2D/LayerA"]
-scale = Vector2(1, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerA/Node2D"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -116,7 +114,6 @@ vframes = 2
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerA/Node2D"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -124,11 +121,9 @@ vframes = 2
 
 [node name="Node2D2" type="Node2D" parent="Node2D/LayerA"]
 position = Vector2(128, 0)
-scale = Vector2(1, 1)
 
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerA/Node2D2"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -137,7 +132,6 @@ vframes = 2
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerA/Node2D2"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -148,7 +142,6 @@ position = Vector2(256, 0)
 
 [node name="Sprite2D8" type="Sprite2D" parent="Node2D/LayerA/Node2D3"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -157,7 +150,6 @@ vframes = 2
 [node name="Sprite2D9" type="Sprite2D" parent="Node2D/LayerA/Node2D3"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -168,7 +160,6 @@ position = Vector2(384, 0)
 
 [node name="Sprite2D6" type="Sprite2D" parent="Node2D/LayerA/Node2D4"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -177,7 +168,6 @@ vframes = 2
 [node name="Sprite2D7" type="Sprite2D" parent="Node2D/LayerA/Node2D4"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -189,7 +179,6 @@ vframes = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -199,7 +188,6 @@ frame = 4
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -209,7 +197,6 @@ frame = 4
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -221,7 +208,6 @@ position = Vector2(128, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D2"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -231,7 +217,6 @@ frame = 4
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D2"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -241,7 +226,6 @@ frame = 4
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D2"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -253,7 +237,6 @@ position = Vector2(256, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D3"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -263,7 +246,6 @@ frame = 4
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D3"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -273,7 +255,6 @@ frame = 4
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D3"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -285,7 +266,6 @@ position = Vector2(384, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerB/Node2D4"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -295,7 +275,6 @@ frame = 4
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerB/Node2D4"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -305,7 +284,6 @@ frame = 4
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerB/Node2D4"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -318,7 +296,6 @@ frame = 4
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -328,7 +305,6 @@ frame = 5
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -338,7 +314,6 @@ frame = 5
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -348,7 +323,6 @@ frame = 5
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D"]
 texture_filter = 1
 position = Vector2(0, 768)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -360,7 +334,6 @@ position = Vector2(128, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -370,7 +343,6 @@ frame = 5
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -380,7 +352,6 @@ frame = 5
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -390,7 +361,6 @@ frame = 5
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D2"]
 texture_filter = 1
 position = Vector2(0, 768)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -402,7 +372,6 @@ position = Vector2(256, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -412,7 +381,6 @@ frame = 5
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -422,7 +390,6 @@ frame = 5
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -432,7 +399,6 @@ frame = 5
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D3"]
 texture_filter = 1
 position = Vector2(0, 768)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -444,7 +410,6 @@ position = Vector2(384, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
 texture_filter = 1
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -454,7 +419,6 @@ frame = 5
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
 texture_filter = 1
 position = Vector2(0, 256)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -464,7 +428,6 @@ frame = 5
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
 texture_filter = 1
 position = Vector2(0, 512)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
@@ -474,7 +437,6 @@ frame = 5
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D/LayerC/Node2D4"]
 texture_filter = 1
 position = Vector2(0, 768)
-scale = Vector2(1, 1)
 texture = ExtResource("1_voawy")
 centered = false
 hframes = 3
