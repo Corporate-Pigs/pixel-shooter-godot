@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxcy4cgbkr2oa"]
+
+[ext_resource type="PackedScene" uid="uid://dgwu35c68nwj" path="res://objects/spaceship_prefab.tscn" id="1_630bx"]
+[ext_resource type="PackedScene" uid="uid://bbeg0676tap2s" path="res://objects/projectile.tscn" id="2_fsjpv"]
+
+[node name="LevelScreen" type="CanvasLayer"]
+
+[node name="SpaceshipPrefab" parent="." instance=ExtResource("1_630bx")]
+projectile_prefab = ExtResource("2_fsjpv")

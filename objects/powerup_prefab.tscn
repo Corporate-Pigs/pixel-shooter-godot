@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2n8vycurgftw"]
+
+[ext_resource type="Texture2D" uid="uid://gdud7y8aquag" path="res://assets/gfx/SpaceShooterAssetPack_Projectiles.png" id="1_2g5k4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxjvg"]
+size = Vector2(6, 6)
+
+[node name="Powerup" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_2g5k4")
+hframes = 6
+vframes = 10
+frame = 22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kxjvg")
