@@ -78,6 +78,7 @@ start={
 2d_physics/layer_6="enemy-projectile"
 2d_physics/layer_7="projectile-despawner"
 2d_physics/layer_8="power-up"
+2d_physics/layer_9="player-limiter"
 
 [rendering]
 

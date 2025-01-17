@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxcy4cgbkr2oa"]
+[gd_scene load_steps=13 format=3 uid="uid://cxcy4cgbkr2oa"]
 
 [ext_resource type="PackedScene" uid="uid://dgwu35c68nwj" path="res://objects/spaceship_prefab.tscn" id="1_630bx"]
 [ext_resource type="PackedScene" uid="uid://cuoib2vhd3kg1" path="res://screens/paralax_background_scene.tscn" id="1_aegty"]
@@ -9,34 +9,20 @@
 [ext_resource type="PackedScene" uid="uid://bbqnjlcidwxbi" path="res://screens/hud/top_score_hud.tscn" id="6_cgu58"]
 [ext_resource type="PackedScene" uid="uid://uudrlv4o4qs0" path="res://screens/hud/credits_hud.tscn" id="7_h5hyj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6wqb"]
-size = Vector2(1254.47, 21.875)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3wyt"]
+size = Vector2(1332, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_730pb"]
-size = Vector2(22, 748)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ldsw"]
+size = Vector2(20, 828)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovoja"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qwgx"]
+size = Vector2(20, 648)
 
 [node name="LevelScreen" type="CanvasLayer"]
 script = ExtResource("1_qfeo3")
-
-[node name="ProjectileDespawners" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 44
-
-[node name="CollisionShape2DTop" type="CollisionShape2D" parent="ProjectileDespawners"]
-position = Vector2(575, -60)
-shape = SubResource("RectangleShape2D_o6wqb")
-
-[node name="CollisionShape2DBottom" type="CollisionShape2D" parent="ProjectileDespawners"]
-position = Vector2(575, 700)
-shape = SubResource("RectangleShape2D_o6wqb")
-
-[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="ProjectileDespawners"]
-position = Vector2(-60, 325)
-shape = SubResource("RectangleShape2D_730pb")
-
-[node name="CollisionShape2DRight" type="CollisionShape2D" parent="ProjectileDespawners"]
-position = Vector2(1215, 325)
-shape = SubResource("RectangleShape2D_730pb")
 
 [node name="ParalaxScene" parent="." instance=ExtResource("1_aegty")]
 
@@ -55,6 +41,7 @@ position = Vector2(866, 377)
 
 [node name="SpaceshipPrefab" parent="." instance=ExtResource("1_630bx")]
 position = Vector2(564, 543)
+selected_character = 1
 shots_per_second = 10
 projectile_prefab = ExtResource("2_fsjpv")
 
@@ -75,6 +62,7 @@ size_flags_horizontal = 3
 [node name="Player1InfoHud" parent="HeaderContainer/HBoxContainer/TopLeftContainer" instance=ExtResource("5_i20q8")]
 layout_mode = 2
 is_online = true
+show_hi_score = false
 show_specials = false
 
 [node name="CenterContainer" type="CenterContainer" parent="HeaderContainer/HBoxContainer"]
@@ -133,4 +121,45 @@ visible = false
 layout_mode = 2
 player_number = 2
 
-[connection signal="body_entered" from="ProjectileDespawners" to="." method="_on_projectile_despawners_body_entered"]
+[node name="Despawners" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 172
+
+[node name="CollisionShape2DTop" type="CollisionShape2D" parent="Despawners"]
+position = Vector2(576, -100)
+shape = SubResource("RectangleShape2D_d3wyt")
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="Despawners"]
+position = Vector2(-100, 324)
+shape = SubResource("RectangleShape2D_4ldsw")
+
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="Despawners"]
+position = Vector2(1252, 324)
+shape = SubResource("RectangleShape2D_4ldsw")
+
+[node name="CollisionShape2DBottom" type="CollisionShape2D" parent="Despawners"]
+position = Vector2(576, 748)
+shape = SubResource("RectangleShape2D_d3wyt")
+
+[node name="SpaceshipLimiters" type="CharacterBody2D" parent="."]
+collision_layer = 256
+collision_mask = 3
+motion_mode = 1
+
+[node name="CollisionShape2DTop" type="CollisionShape2D" parent="SpaceshipLimiters"]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_ovoja")
+
+[node name="CollisionShape2DBottom" type="CollisionShape2D" parent="SpaceshipLimiters"]
+position = Vector2(576, 658)
+shape = SubResource("RectangleShape2D_ovoja")
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="SpaceshipLimiters"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_2qwgx")
+
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="SpaceshipLimiters"]
+position = Vector2(1162, 324)
+shape = SubResource("RectangleShape2D_2qwgx")
+
+[connection signal="body_entered" from="Despawners" to="." method="_on_despawners_body_entered"]

@@ -31,6 +31,7 @@ var _time_since_shot: float = 0
 var _time_per_shot: float = 1
 var _level: int = 0
 var _max_level: int = 2
+var _current_score: int = 0
 
 var _k_flame_animation_name: String = "flame"
 
@@ -49,10 +50,17 @@ func _moveInDirection(direction: Vector2) -> KinematicCollision2D:
 func _animateMovement(direction: Vector2) -> void:
 	ship_sprite_2d.frame_coords.x = 1 + int(direction.x)
 
+func _setup_collision_layer_for_player_number() -> void:
+	var layer_mask = 1
+	if player_number == 1:
+		layer_mask = 2
+	collision_layer &= layer_mask
+
 func _ready() -> void:
 	_char_info = Constants.k_characters[selected_character]
 	_time_per_shot = 1 / float(shots_per_second)
 	animation_player.play(_k_flame_animation_name)
+	_setup_collision_layer_for_player_number()
 
 func _process(delta: float) -> void:
 	ship_sprite_2d.frame_coords.y = _char_info._ship_row
@@ -88,5 +96,8 @@ func _check_for_collisions(collision: KinematicCollision2D) -> void:
 	
 	var collider = collision.get_collider()
 	if collider is PowerUp:
+		_current_score += collider.points
+		_level = min(_max_level, _level + collider.levels)
+		ScoreSystem.set_current_score_for_player_number(player_number, _current_score)
 		collider.take()
-		_level = min(_max_level, _level + 1)
+		return
