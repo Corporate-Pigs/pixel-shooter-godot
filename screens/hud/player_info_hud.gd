@@ -2,6 +2,8 @@ extends CenterContainer
 
 @export var player_number = 1
 @export var sprite_number = 1
+@export var is_online = false
+@export var is_on_gameover = false
 @export var show_hi_score = true
 @export var show_lifes = true
 @export var show_specials = true
@@ -21,8 +23,9 @@ var sprites = [life_1_sprite_2d, life_2_sprite_2d, life_3_sprite_2d]
 
 func _ready() -> void:
 	player_label.text = "Player-" + str(player_number)
-	container_lives.visible = show_lifes
-	container_specials.visible = show_specials
+	score_label.visible = is_online
+	container_lives.visible = show_lifes and is_online
+	container_specials.visible = show_specials and is_online
 
 func _process(_delta: float) -> void:
 	var score = 0

@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2n8vycurgftw"]
+[gd_scene load_steps=4 format=3 uid="uid://c2n8vycurgftw"]
 
 [ext_resource type="Texture2D" uid="uid://gdud7y8aquag" path="res://assets/gfx/SpaceShooterAssetPack_Projectiles.png" id="1_2g5k4"]
+[ext_resource type="Script" path="res://objects/power_up_prefab.gd" id="1_dsldh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxjvg"]
 size = Vector2(6, 6)
 
-[node name="Powerup" type="Area2D"]
+[node name="PowerUp" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 128
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_dsldh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

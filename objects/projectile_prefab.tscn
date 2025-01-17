@@ -1,13 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbeg0676tap2s"]
 
 [ext_resource type="Texture2D" uid="uid://gdud7y8aquag" path="res://assets/gfx/SpaceShooterAssetPack_Projectiles.png" id="1_g58yr"]
-[ext_resource type="Script" path="res://objects/projectile.gd" id="1_qh8yh"]
+[ext_resource type="Script" path="res://objects/projectile_prefab.gd" id="1_qh8yh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyxn8"]
 size = Vector2(1, 3)
 
 [node name="Projectile" type="CharacterBody2D"]
 scale = Vector2(4, 4)
+disable_mode = 2
+collision_layer = 44
+collision_mask = 0
 script = ExtResource("1_qh8yh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
