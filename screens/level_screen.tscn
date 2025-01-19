@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxcy4cgbkr2oa"]
+[gd_scene load_steps=14 format=3 uid="uid://cxcy4cgbkr2oa"]
 
 [ext_resource type="PackedScene" uid="uid://dgwu35c68nwj" path="res://objects/spaceship_prefab.tscn" id="1_630bx"]
 [ext_resource type="PackedScene" uid="uid://cuoib2vhd3kg1" path="res://screens/paralax_background_scene.tscn" id="1_aegty"]
 [ext_resource type="Script" path="res://screens/level_screen.gd" id="1_qfeo3"]
 [ext_resource type="PackedScene" uid="uid://bbeg0676tap2s" path="res://objects/projectile_prefab.tscn" id="2_fsjpv"]
+[ext_resource type="PackedScene" uid="uid://drvayasnc2fk2" path="res://objects/enemy_prefab.tscn" id="3_26dsb"]
 [ext_resource type="PackedScene" uid="uid://c2n8vycurgftw" path="res://objects/power_up_prefab.tscn" id="3_51jt1"]
 [ext_resource type="PackedScene" uid="uid://bm7readwc7n88" path="res://screens/hud/player_info_hud.tscn" id="5_i20q8"]
 [ext_resource type="PackedScene" uid="uid://bbqnjlcidwxbi" path="res://screens/hud/top_score_hud.tscn" id="6_cgu58"]
@@ -28,6 +29,17 @@ script = ExtResource("1_qfeo3")
 
 [node name="ProjectilesLayer" type="Node2D" parent="."]
 
+[node name="EnemyLayer" type="Node2D" parent="."]
+
+[node name="EnemyPrefab" parent="EnemyLayer" instance=ExtResource("3_26dsb")]
+position = Vector2(557, 302)
+
+[node name="EnemyPrefab2" parent="EnemyLayer" instance=ExtResource("3_26dsb")]
+position = Vector2(837, 231)
+
+[node name="EnemyPrefab3" parent="EnemyLayer" instance=ExtResource("3_26dsb")]
+position = Vector2(158, 313)
+
 [node name="PowerUpLayer" type="Node2D" parent="."]
 
 [node name="PowerUp" parent="PowerUpLayer" instance=ExtResource("3_51jt1")]
@@ -41,7 +53,6 @@ position = Vector2(866, 377)
 
 [node name="SpaceshipPrefab" parent="." instance=ExtResource("1_630bx")]
 position = Vector2(564, 543)
-selected_character = 1
 shots_per_second = 10
 projectile_prefab = ExtResource("2_fsjpv")
 

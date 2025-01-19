@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgwu35c68nwj"]
+[gd_scene load_steps=11 format=3 uid="uid://dgwu35c68nwj"]
 
 [ext_resource type="Script" path="res://objects/spaceship_prefab.gd" id="1_vyhkg"]
 [ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="2_yck7j"]
@@ -6,6 +6,58 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kokrg"]
 size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_5aqf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion/ExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [83]
+}
+
+[sub_resource type="Animation" id="Animation_j6s8n"]
+resource_name = "explosion"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion/ExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [88, 89, 90, 87]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5a865"]
+_data = {
+"RESET": SubResource("Animation_5aqf2"),
+"explosion": SubResource("Animation_j6s8n")
+}
+
+[sub_resource type="Animation" id="Animation_nlqr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/FlameSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
 
 [sub_resource type="Animation" id="Animation_bje1f"]
 resource_name = "flame"
@@ -22,21 +74,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [18, 19, 20, 21]
-}
-
-[sub_resource type="Animation" id="Animation_nlqr7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/FlameSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_betfs"]
@@ -72,6 +109,22 @@ frame = 18
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kokrg")
 
+[node name="Explosion" type="Node2D" parent="."]
+
+[node name="ExplosionSprite" type="Sprite2D" parent="Explosion"]
+texture_filter = 1
+texture = ExtResource("3_id5dl")
+hframes = 13
+vframes = 8
+frame = 83
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Explosion"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_5a865")
+}
+speed_scale = 4.0
+
 [node name="ShotNodes" type="Node2D" parent="."]
 
 [node name="ShotNode2D0" type="Node2D" parent="ShotNodes"]
@@ -94,3 +147,5 @@ libraries = {
 "": SubResource("AnimationLibrary_betfs")
 }
 speed_scale = 4.0
+
+[connection signal="animation_finished" from="Explosion/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

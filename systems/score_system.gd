@@ -4,10 +4,6 @@ const k_max_entries = 10
 const k_save_file_path = "./saved_data.save"
 
 var global_hi_scores = {
-	"Player1": 1000,
-	"Player2": 2000,
-	"Player3": 1500,
-	"Player4": 3000
 }
 
 var session_hi_scores_per_player = [0, 0]
@@ -70,6 +66,10 @@ func get_current_score_for_player_number(player_number: int) -> int:
 func set_current_score_for_player_number(player_number: int, score: int) -> void:
 	var index = _get_index_from_player_number(player_number)
 	session_current_game_scores_per_player[index] = score
+
+func add_current_score_for_player_number(player_number: int, score: int) -> void:
+	var index = _get_index_from_player_number(player_number)
+	session_current_game_scores_per_player[index] += score
 
 func add_credit_to_player(player_number: int) -> void:
 	var index = _get_index_from_player_number(player_number)

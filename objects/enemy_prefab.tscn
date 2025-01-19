@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://drvayasnc2fk2"]
+
+[ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="1_2i5fr"]
+[ext_resource type="Script" path="res://objects/enemy_prefab.gd" id="1_4h7wd"]
+[ext_resource type="PackedScene" uid="uid://bbeg0676tap2s" path="res://objects/projectile_prefab.tscn" id="2_0wfxy"]
+[ext_resource type="Texture2D" uid="uid://c2l380bgo42hc" path="res://assets/gfx/SpaceShooterAssetPack_Miscellaneous.png" id="2_r211x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l4pb"]
+size = Vector2(8, 6)
+
+[sub_resource type="Animation" id="Animation_5aqf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion/ExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [83]
+}
+
+[sub_resource type="Animation" id="Animation_j6s8n"]
+resource_name = "explosion"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion/ExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [88, 89, 90, 87]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5a865"]
+_data = {
+"RESET": SubResource("Animation_5aqf2"),
+"explosion": SubResource("Animation_j6s8n")
+}
+
+[node name="EnemyPrefab" type="Area2D"]
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 12
+script = ExtResource("1_4h7wd")
+projectile_prefab = ExtResource("2_0wfxy")
+
+[node name="ShipSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_2i5fr")
+hframes = 10
+vframes = 10
+frame = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4l4pb")
+
+[node name="Explosion" type="Node2D" parent="."]
+
+[node name="ExplosionSprite" type="Sprite2D" parent="Explosion"]
+texture_filter = 1
+texture = ExtResource("2_r211x")
+hframes = 13
+vframes = 8
+frame = 83
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Explosion"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_5a865")
+}
+speed_scale = 4.0
+
+[node name="ShotNode2D" type="Node2D" parent="."]
+position = Vector2(0, 3)
+
+[connection signal="animation_finished" from="Explosion/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
