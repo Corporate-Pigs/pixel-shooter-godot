@@ -18,14 +18,13 @@ extends CenterContainer
 @onready var life_1_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/ContainerLives/Container/Life1Sprite2D
 @onready var life_2_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/ContainerLives/Container2/Life2Sprite2D
 @onready var life_3_sprite_2d: Sprite2D = $VBoxContainer/HBoxContainer/ContainerLives/Container3/Life3Sprite2D
-
-var sprites = [life_1_sprite_2d, life_2_sprite_2d, life_3_sprite_2d]
+@onready var sprites = [life_1_sprite_2d, life_2_sprite_2d, life_3_sprite_2d]
 
 func _ready() -> void:
 	player_label.text = "Player-" + str(player_number)
-	score_label.visible = is_online
-	container_lives.visible = show_lifes and is_online
-	container_specials.visible = show_specials and is_online
+	score_label.modulate.a = 1 if is_online else 0
+	container_lives.modulate.a = 1 if show_lifes and is_online else 0
+	container_specials.modulate.a = 1 if show_specials and is_online else 0
 
 func _process(_delta: float) -> void:
 	var score = 0
@@ -34,3 +33,10 @@ func _process(_delta: float) -> void:
 	else:
 		score = ScoreSystem.get_current_score_for_player_number(player_number)
 	score_label.text = str(score)
+
+func set_lifes(lifes: int) -> void:
+	for sprite in sprites:
+		sprite.modulate.a = 0
+	
+	for i in lifes:
+		sprites[i].modulate.a = 1

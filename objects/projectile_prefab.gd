@@ -44,6 +44,8 @@ func hit() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	body.hit()
+	self.hit()
 
 func _on_area_entered(area: Area2D) -> void:
 	area.hit(self)
+	self.hit()

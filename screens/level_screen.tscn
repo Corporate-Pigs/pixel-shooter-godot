@@ -51,8 +51,11 @@ position = Vector2(715, 454)
 [node name="PowerUp3" parent="PowerUpLayer" instance=ExtResource("3_51jt1")]
 position = Vector2(866, 377)
 
-[node name="SpaceshipPrefab" parent="." instance=ExtResource("1_630bx")]
+[node name="Player1Spaceship" parent="." instance=ExtResource("1_630bx")]
 position = Vector2(564, 543)
+player_number = 1
+selected_character = 0
+speed = 500
 shots_per_second = 10
 projectile_prefab = ExtResource("2_fsjpv")
 
@@ -173,4 +176,5 @@ shape = SubResource("RectangleShape2D_2qwgx")
 position = Vector2(1162, 324)
 shape = SubResource("RectangleShape2D_2qwgx")
 
+[connection signal="exploded" from="Player1Spaceship" to="." method="_on_spaceship_exploded"]
 [connection signal="body_entered" from="Despawners" to="." method="_on_despawners_body_entered"]

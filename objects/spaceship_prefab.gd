@@ -12,6 +12,7 @@ class_name Spaceship
 @onready var shot_node_2d_4: Node2D = $ShotNodes/ShotNode2D4
 @onready var flame_animation_player: AnimationPlayer = $AnimationPlayer
 @onready var explode_animation_player: AnimationPlayer = $Explosion/AnimationPlayer
+@onready var respawn_timer: Timer = $RespawnTimer
 
 @onready var shot_nodes = [
 	shot_node_2d_0, 
@@ -65,7 +66,7 @@ func _ready() -> void:
 	elif player_number == 2:
 		collision_layer = Constants.k_player_2_layer
 		#collision_layer &= 1
-	respawn()
+	_respawn()
 
 func _process(delta: float) -> void:
 	if is_destroyed:
@@ -118,7 +119,7 @@ func _explode() -> void:
 	explosion_nodes.visible = true
 	is_destroyed = true
 
-func respawn() -> void:
+func _respawn() -> void:
 	flame_animation_player.play(_k_flame_animation_name)
 	explode_animation_player.seek(0)
 	sprites_node_2d.visible = true
@@ -128,7 +129,13 @@ func respawn() -> void:
 func hit() -> void:
 	_explode()
 
+func respawn(delay_seconds: int) -> void:
+	respawn_timer.start(delay_seconds)
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == _k_explosion_animation_name:
 		explosion_nodes.visible = false
 		emit_signal(exploded.get_name(), player_number)
+
+func _on_respawn_timer_timeout() -> void:
+	_respawn()
