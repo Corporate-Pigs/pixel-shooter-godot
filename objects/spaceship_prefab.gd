@@ -13,6 +13,7 @@ class_name Spaceship
 @onready var flame_animation_player: AnimationPlayer = $AnimationPlayer
 @onready var explode_animation_player: AnimationPlayer = $Explosion/AnimationPlayer
 @onready var respawn_timer: Timer = $RespawnTimer
+@onready var invulnerable_timer: Timer = $InvulnerableTimer
 
 @onready var shot_nodes = [
 	shot_node_2d_0, 
@@ -37,6 +38,7 @@ var _time_per_shot: float = 1
 var _level: int = 0
 var _max_level: int = 2
 var is_destroyed: bool = false
+var is_invulnerable: bool = false
 
 const _k_flame_animation_name: String = "flame"
 const _k_explosion_animation_name = "explosion"
@@ -112,12 +114,11 @@ func _check_for_collisions(collision: KinematicCollision2D) -> void:
 		return
 
 func _explode() -> void:
-	if is_destroyed:
-		return
 	explode_animation_player.play(_k_explosion_animation_name)
 	sprites_node_2d.visible = false
 	explosion_nodes.visible = true
 	is_destroyed = true
+	_level = 0
 
 func _respawn() -> void:
 	flame_animation_player.play(_k_flame_animation_name)
@@ -126,8 +127,20 @@ func _respawn() -> void:
 	explosion_nodes.visible = false
 	is_destroyed = false
 
-func hit() -> void:
+func _set_invulnerable() -> void:
+	is_invulnerable = true
+	modulate.a = 0.5
+	invulnerable_timer.start()
+	
+func _set_vulnerable() -> void:
+	is_invulnerable = false
+	modulate.a = 1
+
+func hit() -> bool:
+	if is_destroyed or is_invulnerable:
+		return false
 	_explode()
+	return true
 
 func respawn(delay_seconds: int) -> void:
 	respawn_timer.start(delay_seconds)
@@ -139,3 +152,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_respawn_timer_timeout() -> void:
 	_respawn()
+	_set_invulnerable()
+
+func _on_invulnerable_timer_timeout() -> void:
+	_set_vulnerable()

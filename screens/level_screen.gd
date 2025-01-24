@@ -18,7 +18,8 @@ func _process(_delta: float) -> void:
 func _on_despawners_body_entered(body: Node2D) -> void:
 	if body is Projectile:
 		body.hit()
-	body.queue_free()
+	elif body is Enemy:
+		body.despawn()
 
 func _on_spaceship_exploded(player_number: int) -> void:
 	var player_index = player_number - 1

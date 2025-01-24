@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1uy5qr67vyhn"]
+
+[ext_resource type="Script" path="res://controller/enemy_controller.gd" id="1_ep5at"]
+
+[node name="EnemyController" type="Node2D"]
+script = ExtResource("1_ep5at")
+
+[node name="WaveSpawnerTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[connection signal="timeout" from="WaveSpawnerTimer" to="." method="_on_wave_spawner_timer_timeout"]

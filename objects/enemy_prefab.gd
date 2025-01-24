@@ -12,12 +12,15 @@ class_name Enemy
 @export var points: int = 1000
 @export var shots_per_second: int = 1
 @export var projectile_prefab: PackedScene
+@export var power_up_spawn_rate: float = 0.5
 
 var _time_since_shot: float = 0
 var _time_per_shot: float = 1
 
 const k_explosion_animation_name = "explosion"
-var shooting_speed: Vector2 = Vector2(0, 100)
+var _projectile_speed: int = 300
+var _shooting_direction: Vector2 = Vector2(0, 1)
+var _move_speed: Vector2 = Vector2(0, 0)
 
 func _check_for_collisions(collision: KinematicCollision2D) -> void:
 	if collision == null:
@@ -36,10 +39,11 @@ func _check_for_collisions(collision: KinematicCollision2D) -> void:
 func _shoot() -> void:
 	var projectiles_layer_node = Constants.get_projectiles_layer()
 	var projectile: Projectile = projectile_prefab.instantiate() as Projectile
-	projectile.initialize(12, 0, Vector2(0, 500), 1)
+	projectile.initialize(12, 0, _projectile_speed * _shooting_direction, 1)
 	var shoot_position = shot_node_2d.global_position
 	projectile.global_position = shoot_position
 	projectiles_layer_node.add_child(projectile)
+	_shooting_direction = Vector2(randf(), randf()).normalized()
 
 func _explode() -> void:
 	ship_sprite.visible = false
@@ -49,16 +53,17 @@ func _explode() -> void:
 func _ready() -> void:
 	ship_sprite.visible = true
 	explosion_sprite.visible = false
+	_move_speed = Vector2(randi() % 60 - 30, 100)
 	_time_per_shot = 1 / float(shots_per_second)
 
 func _process(delta: float) -> void:
 	_time_since_shot += delta
-	if hitpoints > 0 and _time_since_shot > _time_per_shot:
+	if hitpoints > 0 and _time_since_shot > _time_per_shot and not is_offscreen():
 		_shoot()
 		_time_since_shot = 0
 
 func _physics_process(delta: float) -> void:
-	pass
+	position += _move_speed * delta
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == k_explosion_animation_name:
@@ -72,3 +77,11 @@ func hit(area: Area2D) -> void:
 		return
 	ScoreSystem.add_current_score_for_player_number(projectile._player_number, points)
 	_explode()
+
+func despawn() -> void:
+	queue_free()
+
+func is_offscreen() -> bool:
+	var screen_size = get_viewport().get_visible_rect().size
+	var node_position = global_position
+	return node_position.x < 0 or node_position.x > screen_size.x or node_position.y < 0 or node_position.y > screen_size.y
