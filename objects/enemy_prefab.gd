@@ -10,9 +10,10 @@ class_name Enemy
 @export var hitpoints: int = 3
 @export var speed: int = 100
 @export var points: int = 1000
-@export var shots_per_second: int = 1
+@export var shots_per_second: float = 0.25
 @export var projectile_prefab: PackedScene
-@export var power_up_spawn_rate: float = 0.5
+
+signal exploded(position: Vector2)
 
 var _time_since_shot: float = 0
 var _time_per_shot: float = 1
@@ -21,6 +22,7 @@ const k_explosion_animation_name = "explosion"
 var _projectile_speed: int = 300
 var _shooting_direction: Vector2 = Vector2(0, 1)
 var _move_speed: Vector2 = Vector2(0, 0)
+var _destroyed_by_player: int = 0
 
 func _check_for_collisions(collision: KinematicCollision2D) -> void:
 	if collision == null:
@@ -54,7 +56,7 @@ func _ready() -> void:
 	ship_sprite.visible = true
 	explosion_sprite.visible = false
 	_move_speed = Vector2(randi() % 60 - 30, 100)
-	_time_per_shot = 1 / float(shots_per_second)
+	_time_per_shot = 1 / shots_per_second
 
 func _process(delta: float) -> void:
 	_time_since_shot += delta
@@ -67,6 +69,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == k_explosion_animation_name:
+		emit_signal(exploded.get_name(), global_position, _destroyed_by_player)
 		queue_free()
 
 func hit(area: Area2D) -> void:
@@ -77,6 +80,7 @@ func hit(area: Area2D) -> void:
 		return
 	ScoreSystem.add_current_score_for_player_number(projectile._player_number, points)
 	_explode()
+	_destroyed_by_player = projectile._player_number
 
 func despawn() -> void:
 	queue_free()

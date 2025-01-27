@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw6nj7n0us8w0"]
+
+[ext_resource type="Script" path="res://screens/hud/game_over_hud.gd" id="1_ey1jj"]
+
+[node name="GameOverHud" type="CanvasLayer"]
+script = ExtResource("1_ey1jj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "GAME OVER"
+
+[node name="ContinueLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CONTINUE?"
+
+[node name="CountDownLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "9"
+horizontal_alignment = 1
+
+[node name="CountDownTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]

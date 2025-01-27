@@ -25,6 +25,7 @@ size = Vector2(20, 648)
 
 [node name="LevelScreen" type="CanvasLayer"]
 script = ExtResource("1_qfeo3")
+power_up_prefab = ExtResource("3_51jt1")
 
 [node name="ParalaxScene" parent="." instance=ExtResource("1_aegty")]
 
@@ -32,25 +33,7 @@ script = ExtResource("1_qfeo3")
 
 [node name="EnemyLayer" type="Node2D" parent="."]
 
-[node name="EnemyPrefab" parent="EnemyLayer" instance=ExtResource("3_26dsb")]
-position = Vector2(557, 302)
-
-[node name="EnemyPrefab2" parent="EnemyLayer" instance=ExtResource("3_26dsb")]
-position = Vector2(837, 231)
-
-[node name="EnemyPrefab3" parent="EnemyLayer" instance=ExtResource("3_26dsb")]
-position = Vector2(158, 313)
-
 [node name="PowerUpLayer" type="Node2D" parent="."]
-
-[node name="PowerUp" parent="PowerUpLayer" instance=ExtResource("3_51jt1")]
-position = Vector2(412, 336)
-
-[node name="PowerUp2" parent="PowerUpLayer" instance=ExtResource("3_51jt1")]
-position = Vector2(715, 454)
-
-[node name="PowerUp3" parent="PowerUpLayer" instance=ExtResource("3_51jt1")]
-position = Vector2(866, 377)
 
 [node name="Player1Spaceship" parent="." instance=ExtResource("1_630bx")]
 position = Vector2(564, 543)
@@ -183,3 +166,4 @@ spawns_per_wave = 8
 
 [connection signal="exploded" from="Player1Spaceship" to="." method="_on_spaceship_exploded"]
 [connection signal="body_entered" from="Despawners" to="." method="_on_despawners_body_entered"]
+[connection signal="on_enemy_destroyed" from="EnemyController" to="." method="_on_enemy_destroyed"]
