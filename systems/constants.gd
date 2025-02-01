@@ -36,7 +36,7 @@ class CharacterInfo:
 		self._explosion_row = explosion_row
 
 var k_characters = [
-	CharacterInfo.new("John", 0, 0, 8, 0),
+	CharacterInfo.new("John", 0, 0, 2, 0),
 	CharacterInfo.new("Anna", 1, 1, 12, 0),
 	CharacterInfo.new("Kyle", 2, 2, 7, 0),
 ]

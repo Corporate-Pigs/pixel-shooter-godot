@@ -26,7 +26,7 @@ class_name Spaceship
 @export var player_number: int = 1
 @export var selected_character: int = 0
 @export var speed: int = 500
-@export var shots_per_second: int = 1
+@export var shots_per_second: int = 10
 @export var projectile_prefab: PackedScene
 
 signal exploded(player_number: int)
@@ -59,6 +59,7 @@ func _animateMovement(direction: Vector2) -> void:
 	ship_sprite_2d.frame_coords.x = 1 + int(direction.x)
 
 func _ready() -> void:
+	selected_character = ScoreSystem.player_characters[player_number - 1]
 	_char_info = Constants.k_characters[selected_character]
 	ship_sprite_2d.frame_coords.y = _char_info._ship_row
 	_time_per_shot = 1 / float(shots_per_second)

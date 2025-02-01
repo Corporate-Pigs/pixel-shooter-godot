@@ -7,11 +7,14 @@ signal on_game_over()
 @onready var center_container: CenterContainer = $CenterContainer
 @onready var count_down_label: Label = $CenterContainer/VBoxContainer/CountDownLabel
 @onready var count_down_timer: Timer = $CountDownTimer
+@onready var game_over_delay_timer: Timer = $GameOverDelayTimer
 
 var _count_number = 9
+var is_on_gameover_delay = false
 
 func _ready() -> void:
 	stop_count_down()
+	is_on_gameover_delay = false
 
 func _update_count_down() -> void:
 	_count_number -= 1
@@ -28,5 +31,11 @@ func stop_count_down() -> void:
 func _on_count_down_timer_timeout() -> void:
 	_update_count_down()
 	if _count_number == -1:
-		stop_count_down()
-		emit_signal(on_game_over.get_name())
+		count_down_timer.stop()
+		count_down_label.visible = false
+		game_over_delay_timer.start()
+		is_on_gameover_delay = true
+
+func _on_game_over_delay_timer_timeout() -> void:
+	game_over_delay_timer.stop()
+	emit_signal(on_game_over.get_name())

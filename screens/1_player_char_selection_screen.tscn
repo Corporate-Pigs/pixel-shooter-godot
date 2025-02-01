@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://5nv44gyhv2kg"]
+[gd_scene load_steps=7 format=3 uid="uid://5nv44gyhv2kg"]
 
 [ext_resource type="PackedScene" uid="uid://b8sw8eg5dcjub" path="res://screens/char_selection_subscreen.tscn" id="1_hen3t"]
 [ext_resource type="Script" path="res://screens/1_player_char_selection_screen.gd" id="1_nelqi"]
 [ext_resource type="PackedScene" uid="uid://cuoib2vhd3kg1" path="res://screens/paralax_background_scene.tscn" id="1_nq3ox"]
+[ext_resource type="PackedScene" uid="uid://cxcy4cgbkr2oa" path="res://screens/level_screen.tscn" id="2_a6eso"]
 
 [sub_resource type="Animation" id="Animation_3xm16"]
 resource_name = "pulse-start"
@@ -14,6 +15,7 @@ _data = {
 
 [node name="CharSelectionScreen" type="CanvasLayer"]
 script = ExtResource("1_nelqi")
+next_scene = ExtResource("2_a6eso")
 
 [node name="ParalaxScene" parent="." instance=ExtResource("1_nq3ox")]
 
@@ -54,5 +56,8 @@ libraries = {
 "": SubResource("AnimationLibrary_hxf6x")
 }
 
+[node name="StartingTimer" type="Timer" parent="."]
+
 [connection signal="on_char_selected" from="MarginContainer/VSplitContainer/AspectRatioContainer/CharSelectionSubscreen" to="." method="_on_char_selection_subscreen_on_char_selected"]
 [connection signal="on_char_unselected" from="MarginContainer/VSplitContainer/AspectRatioContainer/CharSelectionSubscreen" to="." method="_on_char_selection_subscreen_on_char_unselected"]
+[connection signal="timeout" from="StartingTimer" to="." method="_on_starting_timer_timeout"]

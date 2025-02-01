@@ -6,6 +6,7 @@ class_name Enemy
 @onready var explosion_sprite: Sprite2D = $Explosion/ExplosionSprite
 @onready var animation_player: AnimationPlayer = $Explosion/AnimationPlayer
 @onready var shot_node_2d: Node2D = $ShotNode2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var hitpoints: int = 3
 @export var speed: int = 100
@@ -51,6 +52,7 @@ func _explode() -> void:
 	ship_sprite.visible = false
 	explosion_sprite.visible = true
 	animation_player.play(k_explosion_animation_name)
+	audio_stream_player.play()
 
 func _ready() -> void:
 	ship_sprite.visible = true

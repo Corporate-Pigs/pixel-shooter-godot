@@ -1,25 +1,30 @@
 extends CanvasLayer
 
+class_name LevelScreen
+
+@export var next_scene: PackedScene
 @export var power_up_prefab: PackedScene
 @export var power_up_drop_rate: float = 0.5
+@export var player_1_character: int = 0
 
-@onready var player_1_spaceship: Spaceship = $Player1Spaceship
+@onready var player_1_spaceship: Spaceship = $PlayerLayer/Player1Spaceship
 @onready var power_up_layer: Node2D = $PowerUpLayer
+@onready var player_layer: Node2D = $PlayerLayer
 @onready var player_1_info_hud: CenterContainer = $HeaderContainer/HBoxContainer/TopLeftContainer/Player1InfoHud
 @onready var player_2_info_hud: CenterContainer = $HeaderContainer/HBoxContainer/TopRightContainer/Player2InfoHud
 @onready var huds_per_player = [player_1_info_hud, player_2_info_hud]
 @onready var lifes_per_player = [3, 3]
-@onready var players = [player_1_spaceship]
+@onready var players = []
 @onready var game_over_hud: GameOverHud = $GameOverHud
 
 var is_on_gameover_countdown: bool = false
 
 func _ready() -> void:
-	pass
+	players = [player_1_spaceship]
 
 func _process(_delta: float) -> void:
 	var player_index = 0
-	if is_on_gameover_countdown and Input.is_action_pressed(Constants.k_start):
+	if (is_on_gameover_countdown or game_over_hud.is_on_gameover_delay) and Input.is_action_pressed(Constants.k_start):
 		players[player_index].respawn(0)
 		is_on_gameover_countdown = false
 		lifes_per_player[player_index] = 3
@@ -48,4 +53,4 @@ func _on_enemy_destroyed(position: Vector2, player_number: int) -> void:
 		power_up_layer.add_child(power_up)
 
 func _on_game_over() -> void:
-	
+	get_tree().change_scene_to_packed(next_scene)

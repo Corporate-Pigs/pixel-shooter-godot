@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://drvayasnc2fk2"]
+[gd_scene load_steps=10 format=3 uid="uid://drvayasnc2fk2"]
 
 [ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="1_2i5fr"]
 [ext_resource type="Script" path="res://objects/enemy_prefab.gd" id="1_4h7wd"]
 [ext_resource type="PackedScene" uid="uid://bbeg0676tap2s" path="res://objects/projectile_prefab.tscn" id="2_0wfxy"]
 [ext_resource type="Texture2D" uid="uid://c2l380bgo42hc" path="res://assets/gfx/SpaceShooterAssetPack_Miscellaneous.png" id="2_r211x"]
+[ext_resource type="AudioStream" uid="uid://c8151xothojla" path="res://assets/sfx/retro-explode-1-236678.mp3" id="5_8snjd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4l4pb"]
 size = Vector2(8, 6)
@@ -82,5 +83,8 @@ speed_scale = 4.0
 
 [node name="ShotNode2D" type="Node2D" parent="."]
 position = Vector2(0, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8snjd")
 
 [connection signal="animation_finished" from="Explosion/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

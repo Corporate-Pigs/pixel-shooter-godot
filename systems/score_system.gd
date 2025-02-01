@@ -9,6 +9,7 @@ var global_hi_scores = {
 var session_hi_scores_per_player = [0, 0]
 var session_current_game_scores_per_player = [0, 0]
 var credits_per_player = [0, 0]
+var player_characters = [0, 0]
 
 func _sort_by_score(a, b, hi_scores) -> bool:
 	return hi_scores[a] < hi_scores[b] 
