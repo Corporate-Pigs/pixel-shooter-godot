@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxcy4cgbkr2oa"]
+[gd_scene load_steps=18 format=3 uid="uid://cxcy4cgbkr2oa"]
 
 [ext_resource type="PackedScene" uid="uid://dgwu35c68nwj" path="res://objects/spaceship_prefab.tscn" id="1_630bx"]
 [ext_resource type="PackedScene" uid="uid://cuoib2vhd3kg1" path="res://screens/paralax_background_scene.tscn" id="1_aegty"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://uudrlv4o4qs0" path="res://screens/hud/credits_hud.tscn" id="7_h5hyj"]
 [ext_resource type="PackedScene" uid="uid://d1uy5qr67vyhn" path="res://controller/enemy_controller.tscn" id="10_jb3m6"]
 [ext_resource type="PackedScene" uid="uid://cw6nj7n0us8w0" path="res://screens/hud/game_over_hud.tscn" id="11_jthbm"]
+[ext_resource type="AudioStream" uid="uid://chvykjyfqgoxu" path="res://assets/sfx/WipEout® OST [PSX] CoLD SToRAGE - Cairodrome.mp3" id="13_cyfoc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3wyt"]
 size = Vector2(1332, 20)
@@ -169,7 +170,10 @@ enemy_prefab = ExtResource("3_26dsb")
 spawns_per_wave = 8
 
 [node name="GameOverHud" parent="." instance=ExtResource("11_jthbm")]
-visible = false
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_cyfoc")
+autoplay = true
 
 [connection signal="exploded" from="PlayerLayer/Player1Spaceship" to="." method="_on_spaceship_exploded"]
 [connection signal="body_entered" from="Despawners" to="." method="_on_despawners_body_entered"]

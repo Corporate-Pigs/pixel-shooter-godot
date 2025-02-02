@@ -6,8 +6,10 @@ signal on_game_over()
 
 @onready var center_container: CenterContainer = $CenterContainer
 @onready var count_down_label: Label = $CenterContainer/VBoxContainer/CountDownLabel
+@onready var continue_label: Label = $CenterContainer/VBoxContainer/ContinueLabel
 @onready var count_down_timer: Timer = $CountDownTimer
 @onready var game_over_delay_timer: Timer = $GameOverDelayTimer
+@onready var game_over_stream_player: AudioStreamPlayer = $GameOverStreamPlayer
 
 var _count_number = 9
 var is_on_gameover_delay = false
@@ -33,8 +35,10 @@ func _on_count_down_timer_timeout() -> void:
 	if _count_number == -1:
 		count_down_timer.stop()
 		count_down_label.visible = false
+		continue_label.visible = false
 		game_over_delay_timer.start()
 		is_on_gameover_delay = true
+		game_over_stream_player.play()
 
 func _on_game_over_delay_timer_timeout() -> void:
 	game_over_delay_timer.stop()

@@ -52,6 +52,7 @@ func _explode() -> void:
 	ship_sprite.visible = false
 	explosion_sprite.visible = true
 	animation_player.play(k_explosion_animation_name)
+	audio_stream_player.pitch_scale = randf() * 3.0
 	audio_stream_player.play()
 
 func _ready() -> void:

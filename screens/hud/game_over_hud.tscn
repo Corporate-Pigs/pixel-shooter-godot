@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw6nj7n0us8w0"]
+[gd_scene load_steps=3 format=3 uid="uid://cw6nj7n0us8w0"]
 
 [ext_resource type="Script" path="res://screens/hud/game_over_hud.gd" id="1_ey1jj"]
+[ext_resource type="AudioStream" uid="uid://cbyiccs2rorh3" path="res://assets/sfx/videogame-death-sound-43894.mp3" id="2_jqg8j"]
 
 [node name="GameOverHud" type="CanvasLayer"]
 script = ExtResource("1_ey1jj")
@@ -35,6 +36,10 @@ horizontal_alignment = 1
 autostart = true
 
 [node name="GameOverDelayTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="GameOverStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jqg8j")
 
 [connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]
 [connection signal="timeout" from="GameOverDelayTimer" to="." method="_on_game_over_delay_timer_timeout"]

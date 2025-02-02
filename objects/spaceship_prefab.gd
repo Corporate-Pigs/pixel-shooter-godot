@@ -14,6 +14,8 @@ class_name Spaceship
 @onready var explode_animation_player: AnimationPlayer = $Explosion/AnimationPlayer
 @onready var respawn_timer: Timer = $RespawnTimer
 @onready var invulnerable_timer: Timer = $InvulnerableTimer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var powerup_take_stream_player: AudioStreamPlayer = $PowerupTakeStreamPlayer
 
 @onready var shot_nodes = [
 	shot_node_2d_0, 
@@ -98,7 +100,7 @@ func _shoot() -> void:
 		var shoot_position = node.global_position
 		projectile.global_position = shoot_position
 		projectiles_layer_node.add_child(projectile)
-		
+		audio_stream_player.play()
 		n_shots -= 1
 		if n_shots == 0:
 			return
@@ -112,6 +114,7 @@ func _check_for_collisions(collision: KinematicCollision2D) -> void:
 		_level = min(_max_level, _level + collider.levels)
 		ScoreSystem.add_current_score_for_player_number(player_number, collider.points)
 		collider.take()
+		powerup_take_stream_player.play()
 		return
 
 func _explode() -> void:

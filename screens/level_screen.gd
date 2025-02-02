@@ -53,4 +53,4 @@ func _on_enemy_destroyed(position: Vector2, player_number: int) -> void:
 		power_up_layer.add_child(power_up)
 
 func _on_game_over() -> void:
-	get_tree().change_scene_to_packed(next_scene)
+	get_tree().change_scene_to_file("res://screens/main_menu_screen.tscn")

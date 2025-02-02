@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgwu35c68nwj"]
+[gd_scene load_steps=13 format=3 uid="uid://dgwu35c68nwj"]
 
 [ext_resource type="Script" path="res://objects/spaceship_prefab.gd" id="1_vyhkg"]
 [ext_resource type="Texture2D" uid="uid://2tqkqdvyvs6" path="res://assets/gfx/SpaceShooterAssetPack_Ships.png" id="2_yck7j"]
 [ext_resource type="Texture2D" uid="uid://c2l380bgo42hc" path="res://assets/gfx/SpaceShooterAssetPack_Miscellaneous.png" id="3_id5dl"]
+[ext_resource type="AudioStream" uid="uid://lqil5a17uw85" path="res://assets/sfx/retro-game-shot-2-152053.mp3" id="4_upje8"]
+[ext_resource type="AudioStream" uid="uid://b1reyqw7lw1a6" path="res://assets/sfx/8-bit-game-sfx-sound-18-269971.mp3" id="5_ur2o5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kokrg"]
 size = Vector2(8, 8)
@@ -154,6 +156,12 @@ one_shot = true
 [node name="InvulnerableTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_upje8")
+
+[node name="PowerupTakeStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ur2o5")
 
 [connection signal="animation_finished" from="Explosion/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
